@@ -1,0 +1,16 @@
+name: Build APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get source
+        uses: actions/checkout@v4
+
+      - name: Build APK
+        uses: docker://ghcr.io/kivy/buildozer:latest
+        with:
+          args: buildozer android debug
